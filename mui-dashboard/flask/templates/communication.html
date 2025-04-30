@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CampusCareer Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <!-- Flowbite (if used) -->
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style>
+    @keyframes ripple {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(1.8);
+        opacity: 0;
+      }
+    }
+
+    .ripple {
+      position: absolute;
+      border: 2px solid #5a5afc;
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      animation: ripple 1.5s infinite;
+      pointer-events: none;
+    }
+
+    .ripple:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+
+    .ripple:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    /* Hide ripple container when not active */
+    #rippleContainer.hidden {
+      display: none;
+    }
+  </style>
+  <style>
+    /* Core styles to emulate MUI defaults */
+    body {
+      margin: 0;
+      font-family: "Public Sans", sans-serif;
+      color: #3b3b3b;
+    }
+
+    .sidebar {
+      width: 260px;
+      height: 100vh;
+      background-color: #faf8ff;
+      padding-top: 16px;
+      padding-left: 2px;
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar h6 {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding-left: 24px;
+      padding-bottom: 10px;
+      font-weight: 700;
+      color: #3b3b3b;
+      font-size: 1.4rem;
+    }
+
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .nav-item {
+      margin: 12px 16px;
+      border-radius: 8px;
+    }
+
+    .nav-item button,
+    .nav-item a {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      padding-right: 2px;
+      background: none;
+      border: none;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      border-radius: inherit;
+    }
+
+    .nav-item button:hover,
+    .nav-item a:hover {
+      background-color: #ebe6fd;
+    }
+
+    .icon-wrapper {
+      min-width: 0;
+      padding-left: 8px;
+      padding-right: 16px;
+      color: inherit;
+    }
+
+    .badge {
+      position: relative;
+      display: inline-block;
+      margin-left: auto;
+      margin-right: 16px;
+    }
+
+    .badge .badge-count {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background-color: #f44336;
+      color: #fff;
+      font-size: 0.75rem;
+      line-height: 18px;
+      height: 18px;
+      min-width: 18px;
+      text-align: center;
+      border-radius: 9px;
+      padding: 0 4px;
+    }
+
+    details {
+      margin-top: 8px;
+    }
+
+    summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      padding: 8px 0;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .chip {
+      font-size: 0.65rem;
+      font-weight: 600;
+      background-color: #ebe6fd;
+      color: #5c47f5;
+      border-radius: 16px;
+      padding: 2px 6px;
+      margin-left: auto;
+      margin-right: 16px;
+      display: inline-block;
+    }
+
+    /* ↓ tighter “Users” section spacing ↓ */
+    .sidebar details {
+      margin-top: 4px;
+    }
+
+    .sidebar summary {
+      padding: 4px 0;
+    }
+
+    .sidebar .icon-wrapper {
+      padding-left: 4px;
+      padding-right: 8px;
+    }
+  </style>
+</head>
+
+<body style="background-color: #faf8ff;">
+
+  <div class="flex h-screen">
+    <div class="sidebar">
+      <h6 style="color: #9C6ADE;">
+        <img src="{{ url_for('static', filename='hero.png') }}" alt='CampusCareer Logo'
+          style="width: 40px; height: 40px; color: #9C6ADE;" />
+        CampusCareer
+      </h6>
+      <ul class="nav-list">
+        <!-- Dashboard -->
+        <li class="nav-item">
+          <a href="http://localhost:5173/dashboard" style="color: #000000; text-decoration: none; display: flex; align-items: center;">
+            <span class="material-icons icon-wrapper" style="margin-right: 8px; color: #737275;">dashboard</span>
+            Dashboards
+          </a>
+        </li>
+        
+
+        <!-- Users (collapsible) -->
+
+
+        <!-- Assessment -->
+        <!-- make sure you have this in your <head> already -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+        <ul>
+          <li class="nav-item">
+            <button style="color: #000000;"></a>
+              <span class="material-icons icon-wrapper" style="margin-right: 8px; color: #737275;">
+                assessment
+              </span>
+              Assessment
+            </button>
+          </li>
+        </ul>
+
+
+
+        <!-- Communication (link) -->
+        <li class="nav-item" style="background-color: #f0ecfe;">
+          <a href="http://127.0.0.1:5000/communication" style="color: #9C6ADE;">
+            <span class="material-icons icon-wrapper" style="margin-right:8px; color:#9C6ADE;">
+              support_agent
+            </span>
+            Communication
+          </a>
+        </li>
+
+        <style>
+          .nav-item a {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #000;
+            font-weight: normal;
+            border-radius: 5px;
+            transition: color 0.3s ease;
+          }
+
+          .nav-item a:hover {
+            color: #9C6ADE;
+          }
+        </style>
+
+
+      </ul>
+    </div>
+    <!-- Main Content -->
+    <main class="flex-1 p-6 overflow-auto">
+
+
+      <!-- Header -->
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="dashboard-header" style="margin-left: 270px;">Learn. Grow. Achieve. Your Career, Your Way.</h2>
+        <style>
+          .dashboard-header {
+            font-size: 24px;
+            font-weight: 500;
+            animation: fadeIn 1s ease-in-out;
+          }
+
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+              transform: translateY(-10px);
+            }
+
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        </style>
+        <div class="w-10 h-10 rounded-full overflow-hidden">
+          <img src="{{ url_for('static', filename='user.png') }}" alt="Profile" class="inline-block w-8 h-8 mr-2">
+        </div>
+      </div>
+      <div>
+        <p><span style="color: #5f5f5f;">Dashboard &gt; </span>Communication</p>
+        <br />
+      </div>
+
+      <!-- Flex Container for Task and Latest Score -->
+      <div class="flex gap-6" style="margin-left: 255px;">
+        <!-- Task Today Section -->
+        <div class="relative" style="width: 608px; height: 453px;">
+          <div class="bg-white p-6 h-full" style="border-radius: 4px; box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);">
+            <div class="flex justify-between">
+              <div class="container">
+                <h1 class="text-center font-bold text-xl mb-4">
+                  AI Voice Conversation
+                </h1>
+
+                <!-- Centering Container for the Image -->
+                <div class="flex justify-center my-4">
+                  <!-- Relative container for the image and ripple effect -->
+                  <div class="relative" style="width: 128px; height: 128px; overflow: visible">
+                    <img src="{{ url_for('static', filename='image.png') }}" alt="image"
+                      class="w-full h-full rounded-full object-cover border border-gray-300 shadow" id="profileImg" />
+                    <!-- Ripple container overlays the image (initially hidden) -->
+                    <div id="rippleContainer" class="absolute inset-0 flex justify-center items-center hidden"
+                      style="z-index: 1; pointer-events: none">
+                      <span class="ripple"></span>
+                      <span class="ripple"></span>
+                      <span class="ripple"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Buttons Centered with Inline Styles -->
+                <div class="flex justify-center gap-4 mb-2">
+                  <button id="startButton" style="
+              background-color: #9C6ADE;
+              color: white;
+              padding: 8px 16px;
+              border-radius: 6px;
+              border: none;
+              cursor: pointer;
+              transition: box-shadow 0.3s ease;
+                " onmouseover="this.style.boxShadow= '0 4px 10px rgba(0,0,0,0.1)'"
+                    onmouseout="this.style.boxShadow='none'">
+                    Start Conversation
+                  </button>
+
+                  <button id="endButton" style="
+            display: none;
+            background-color: #9C6ADE;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+              ">
+                    End Conversation
+                  </button>
+                </div>
+
+                <p id="status" class="text-center mb-2" style="display: none">
+                  Press Start to Begin
+                </p>
+
+                <div id="conversation">
+                  <h3 class="font-semibold mb-1">Conversation</h3>
+                  <div id="chatBox"
+                    class="h-[145px] overflow-y-auto border border-gray-300 p-4 text-sm whitespace-normal"
+                    style="line-height: 1.5rem; border-radius: 4px; background-color: #faf8ff;">
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Latest Score / Dynamic Chart Container -->
+        <div class="bg-white -xl p-1"
+          style="width: 608px; height: 453px; border-radius: 4px; box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);">
+          <h1 class="pt-5 text-center font-bold text-xl mb-4">
+            Overall Analysis
+          </h1>
+          <div class="pt-1 flex justify-center items-center">
+            <canvas id="radarChart" width="380" height="360"></canvas>
+          </div>
+        </div>
+      </div>
+      <!-- YouTube Suggestions fallback -->
+      <div class="bg-white p-6 mt-6"
+        style="margin-left: 255px; border-radius: 4px; box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);">
+        <div id="feedbackSection" style="display: none">
+          <h3 class="text-center font-bold text-xl mb-4">Feedback</h3>
+          <p id="feedbackText">
+            Your feedback will appear here after the conversation.
+          </p>
+        </div>
+      </div>
+  </div>
+  </main>
+  </div>
+
+  <!-- AI Conversation Script -->
+  <script>
+    document
+      .getElementById("startButton")
+      .addEventListener("click", startConversation);
+    document
+      .getElementById("endButton")
+      .addEventListener("click", endConversation);
+
+    const recognition = new (window.SpeechRecognition ||
+      window.webkitSpeechRecognition)();
+    recognition.lang = "en-US";
+    recognition.interimResults = false;
+    recognition.continuous = false;
+
+    let conversationActive = false;
+    let aiTurn = false;
+
+    function startConversation() {
+      document.getElementById("startButton").style.display = "none";
+      document.getElementById("endButton").style.display = "inline";
+      document.getElementById("status").textContent =
+        "You start speaking first...";
+      conversationActive = true;
+      recognition.start();
+    }
+
+    function endConversation() {
+      conversationActive = false;
+      document.getElementById("endButton").style.display = "none";
+      document.getElementById("status").textContent = "Conversation ended.";
+      // Hide ripple effect if active
+      document.getElementById("rippleContainer").classList.add("hidden");
+      fetch("/feedback")
+        .then((res) => res.json())
+        .then((data) => {
+          const feedbackSection = document.getElementById("feedbackSection");
+          const feedbackText = document.getElementById("feedbackText");
+
+          feedbackText.innerHTML = data.feedback; // Use innerHTML to render <br> tags
+          feedbackSection.style.display = "block"; // Show feedback section
+        });
+    }
+    recognition.onresult = function (event) {
+      if (!conversationActive) return;
+      let userSpeech = event.results[0][0].transcript;
+      updateChat("You", userSpeech);
+      aiTurn = true;
+      fetch("/process", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_input: userSpeech }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          speak(data.ai_response);
+        })
+        .catch((error) => console.error("Error:", error));
+    };
+    recognition.onspeechend = function () {
+      if (!conversationActive) return;
+      setTimeout(() => {
+        if (aiTurn) return; // AI is speaking, so don't trigger again
+        fetch("/continue")
+          .then((response) => response.json())
+          .then((data) => {
+            speak(data.ai_response);
+          });
+      }, 3000);
+    };
+    recognition.onerror = function (event) {
+      console.error("Speech recognition error:", event.error);
+    };
+    function speak(text) {
+      aiTurn = true;
+      updateChat("AI", text);
+      // Show the ripple effect
+      let rippleContainer = document.getElementById("rippleContainer");
+      rippleContainer.classList.remove("hidden");
+
+      let speech = new SpeechSynthesisUtterance(text);
+      speech.lang = "en-US";
+      speech.onend = () => {
+        // Hide the ripple effect when speech ends
+        rippleContainer.classList.add("hidden");
+        aiTurn = false;
+        recognition.start(); // Resume listening after AI speaks
+      };
+
+      window.speechSynthesis.speak(speech);
+    }
+    function updateChat(speaker, message) {
+      let chatBox = document.getElementById("chatBox");
+      chatBox.innerHTML += `<p><strong>${speaker}:</strong> ${message}</p>`;
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+  </script>
+  <script>
+    const ctx = document.getElementById('radarChart').getContext('2d');
+    // Your raw topics from Flask/Jinja
+    const rawLabels = {{ topics | tojson }};
+
+    // List exactly which ones you want on two lines
+    const multiline = [
+      'Grammatical Accuracy',
+      'Pauses & Fillers',
+      'Vocabulary Range',
+      'Precision',
+      'Coherence',
+      'Expression',
+      'Style',
+      'Listening',
+      'Adaptability'
+      // (add or remove from this list as needed)
+    ];
+    // Build final labels array: split only those in `multiline`
+    const labels = rawLabels.map(label =>
+      multiline.includes(label)
+        ? label.split(' ')      // → ["Grammatical","Accuracy"]
+        : label                 // → "Clarity & Pace"
+    );
+    const data = {{ ratings | tojson }};
+    new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels,
+        datasets: [{
+          label: "Score",
+          data,
+          fill: true,
+          backgroundColor: 'rgba(92, 71, 245, 0.2)',
+          borderColor: '#9C6ADE',
+          pointBackgroundColor: '#9C6ADE',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        layout: { padding: 1 },
+        plugins: { legend: { display: false } },
+        elements: { line: { borderWidth: 3 } },
+        scales: {
+          r: {
+            min: 0,
+            max: 10,
+            angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+            grid: { color: 'rgba(0, 0, 0, 0.1)' },
+            pointLabels: {
+              font: { size: 14, weight: 'bold' },
+              padding: 15
+            },
+            ticks: { stepSize: 2, backdropColor: 'transparent' }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

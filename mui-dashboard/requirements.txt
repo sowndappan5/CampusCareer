@@ -1,0 +1,11 @@
+Flask
+flask-cors
+openpyxl
+pandas
+google-generativeai
+google-api-python-client
+math
+re
+json
+os
+logging
