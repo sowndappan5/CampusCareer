@@ -69,6 +69,9 @@ The backend server will usually run on `http://localhost:5000`.
 
 ---
 
+⚠️ Note: Some files or sections of the code have been removed or redacted from this public repository to protect sensitive information, internal configurations, or proprietary logic. The remaining code still reflects the overall structure, logic, and approach used in the project.
+
+
 ## 📬 Contact
 
 Created by
