@@ -12,7 +12,7 @@ CORS(app)  # Enable CORS for all routes
 
 
 # Configure Gemini API
-API_KEY = "AIzaSyB335UzzSBBxHj94igOEAThkn_G_uFP9UY"  # Replace with your actual API key
+API_KEY = "API"  # Replace with your actual API key
 genai.configure(api_key=API_KEY)
 model = genai.GenerativeModel("gemini-1.5-flash")
 

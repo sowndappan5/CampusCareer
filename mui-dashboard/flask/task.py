@@ -8,7 +8,7 @@ from googleapiclient.discovery import build
 app = Flask(__name__)
 CORS(app)
 
-GEMINI_API_KEY = "AIzaSyB335UzzSBBxHj94igOEAThkn_G_uFP9UY"
+GEMINI_API_KEY = "API"
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel("gemini-1.5-flash")
 
