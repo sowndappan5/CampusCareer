@@ -2,6 +2,76 @@
 
 **CampusCareer** is a placement preparation platform that offers personalized learning paths tailored to the specific companies visiting your college campus. It helps students prepare efficiently for interviews by providing structured study plans, feedback systems, and access to curated video resources using AI integration.
 
+
+## Screenshots
+
+<table>
+  <tr>
+    <td>
+      <strong>System Screen:</strong><br>
+      <a href="https://github.com/sowndappan5/Forest-Fire-Detection-and-Distance-Estimation/blob/main/Media/Forest%20fire%20Screen%20View.mp4">
+        <img src="Media/1c.png" width="300">
+      </a>
+    </td>
+    <td>
+      <strong>Real Time:</strong><br>
+      <a href="https://github.com/sowndappan5/Forest-Fire-Detection-and-Distance-Estimation/blob/main/Media/forest%20fire%20side%20view.mp4">
+        <img src="Media/2c.png" width="300">
+      </a>
+    </td>
+    <td>
+      <strong>System Screen:</strong><br>
+      <a href="https://github.com/sowndappan5/Forest-Fire-Detection-and-Distance-Estimation/blob/main/Media/Forest%20fire%20Screen%20View.mp4">
+        <img src="Media/3c.png" width="300">
+      </a>
+    </td>
+    <td>
+      <strong>Real Time:</strong><br>
+      <a href="https://github.com/sowndappan5/Forest-Fire-Detection-and-Distance-Estimation/blob/main/Media/forest%20fire%20side%20view.mp4">
+        <img src="Media/4c.png" width="300">
+      </a>
+    </td>
+    <td>
+      <strong>System Screen:</strong><br>
+      <a href="https://github.com/sowndappan5/Forest-Fire-Detection-and-Distance-Estimation/blob/main/Media/Forest%20fire%20Screen%20View.mp4">
+        <img src="Media/5c.png" width="300">
+      </a>
+    </td>
+    <td>
+      <strong>Real Time:</strong><br>
+      <a href="https://github.com/sowndappan5/Forest-Fire-Detection-and-Distance-Estimation/blob/main/Media/forest%20fire%20side%20view.mp4">
+        <img src="Media/6c.png" width="300">
+      </a>
+    </td>
+    <td>
+      <strong>System Screen:</strong><br>
+      <a href="https://github.com/sowndappan5/Forest-Fire-Detection-and-Distance-Estimation/blob/main/Media/Forest%20fire%20Screen%20View.mp4">
+        <img src="Media/7c.png" width="300">
+      </a>
+    </td>
+    <td>
+      <strong>Real Time:</strong><br>
+      <a href="https://github.com/sowndappan5/Forest-Fire-Detection-and-Distance-Estimation/blob/main/Media/forest%20fire%20side%20view.mp4">
+        <img src="Media/8c.png" width="300">
+      </a>
+    </td>
+    <td>
+      <strong>System Screen:</strong><br>
+      <a href="https://github.com/sowndappan5/Forest-Fire-Detection-and-Distance-Estimation/blob/main/Media/Forest%20fire%20Screen%20View.mp4">
+        <img src="Media/9c.png" width="300">
+      </a>
+    </td>
+    <td>
+      <strong>Real Time:</strong><br>
+      <a href="https://github.com/sowndappan5/Forest-Fire-Detection-and-Distance-Estimation/blob/main/Media/forest%20fire%20side%20view.mp4">
+        <img src="Media/10c.png" width="300">
+      </a>
+    </td>
+  </tr>
+</table>
+
+---
+
 ## 🌟 Features
 
 - ✅ Personalized company-wise preparation plans
